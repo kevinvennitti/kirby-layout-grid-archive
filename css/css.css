@@ -15,12 +15,61 @@
 }
 
 .layout-grid-item {
+  position:relative;
+}
 
+.layout-grid-item-resize-handle {
+  position:absolute;
+  background:rgba(0,255,0,.8);
+}
+
+.layout-grid-item-resize-handle-e,
+.layout-grid-item-resize-handle-w {
+  width:8px;
+  top:0;
+  bottom:0;
+}
+
+.layout-grid-item-resize-handle-e {
+  right:-8px;
+  cursor:e-resize;
+}
+
+.layout-grid-item-resize-handle-w {
+  left:-8px;
+  cursor:w-resize;
+}
+
+.layout-grid-item-resize-handle-n,
+.layout-grid-item-resize-handle-s {
+  height:8px;
+  left:0;
+  right:0;
+}
+
+.layout-grid-item-resize-handle-n {
+  top:-8px;
+  cursor:n-resize;
+}
+
+.layout-grid-item-resize-handle-s {
+  bottom:-8px;
+  cursor:s-resize;
+}
+
+.layout-grid-item-drag-handle {
+  position:absolute;
+  top:0;
+  left:0;
+  width:20px;
+  height:20px;
+  background:rgba(255,255,0,.8);
+  cursor:move;
 }
 
 #item1 {
-  /* line X / line Y / width / height */
-  grid-area: 1 / 1 / span 4 / span 4;
+  /* line Y / line X / height / width */
+  grid-area: 1 / 5 / span 4 / span 3;
   background:rgba(0,0,255,.5);
 }
 
