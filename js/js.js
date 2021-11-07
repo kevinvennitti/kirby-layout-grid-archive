@@ -1,18 +1,9 @@
 let layoutGridPlugin;
 
-$(function(){
-  layoutGridPlugin = new LayoutGridPlugin();
-  layoutGridPlugin.getAllLimits();
-
-  $('.layout-grid-item').on('mousedown', function(e){
-    layoutGridPlugin.triggerMouseDown($(this)[0], e);
+window.onload = function(){
+  layoutGridPlugin = new LayoutGridPlugin({
+    itemSelector: '.layout-grid-item',
+    cols: 12,
+    rows: 12,
   });
-
-  $(document).on('mousemove', function(e){
-    layoutGridPlugin.triggerMouseMove(e);
-  });
-
-  $(document).on('mouseup', function(e){
-    layoutGridPlugin.triggerMouseUp(e);
-  });
-});
+}

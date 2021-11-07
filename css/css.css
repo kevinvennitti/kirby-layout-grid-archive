@@ -14,20 +14,8 @@
   gap: 16px;
 }
 
-.layout-grid-items,
-.layout-grid-placeholders {
-  position:absolute;
-  top:0;
-  left:0;
-}
-
 .layout-grid-item {
 
-}
-
-.layout-grid-placeholder {
-  grid-area: auto / auto;
-  background:rgba(0,255,0,.4);
 }
 
 #item1 {

@@ -1,5 +1,5 @@
 class LayoutGridPlugin {
-  constructor() {
+  constructor(options) {
     this.isDragging = false;
 
     this.grid = {
@@ -38,10 +38,27 @@ class LayoutGridPlugin {
       rowStart: null,
       rowSpan: null
     };
+
+    this.init(options);
   }
 
-  init() {
+  init(options) {
+    const defaults = {
+      itemSelector: '.layout-grid-item',
+      cols: 12,
+      rows: 12
+    };
 
+    let params = Object.assign({}, defaults, options);
+
+    this.params = {};
+    this.params.itemSelector = params.itemSelector;
+
+    this.grid.nbCols = params.cols;
+    this.grid.nbRows = params.rows;
+
+    this.getAllLimits();
+    this.initLayoutGridItems();
   }
 
   getAllLimits() {
@@ -190,5 +207,23 @@ class LayoutGridPlugin {
 
   getStyleProperty(dom, property) {
     return window.getComputedStyle(dom, null).getPropertyValue(property);
+  }
+
+  initLayoutGridItems() {
+    let layoutGridItems = document.querySelectorAll(this.params.itemSelector);
+
+    layoutGridItems.forEach(layoutGridItem => {
+      layoutGridItem.addEventListener('mousedown', function(e) {
+        layoutGridPlugin.triggerMouseDown(this, e);
+      });
+    });
+
+    document.addEventListener('mousemove', function(e){
+      layoutGridPlugin.triggerMouseMove(e);
+    });
+
+    document.addEventListener('mouseup', function(e){
+      layoutGridPlugin.triggerMouseUp(e);
+    });
   }
 }
