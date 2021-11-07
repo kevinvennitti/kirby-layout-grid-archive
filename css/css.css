@@ -1,5 +1,5 @@
 #layout-grid-container {
-  width:824px;
+
   margin:0 auto;
   position:relative;
 }
@@ -21,6 +21,7 @@
 .layout-grid-item-resize-handle {
   position:absolute;
   background:rgba(0,255,0,.8);
+  user-select: none;
 }
 
 .layout-grid-item-resize-handle-e,
@@ -61,10 +62,11 @@
   position:absolute;
   top:0;
   left:0;
-  width:20px;
-  height:20px;
+  width:40px;
+  height:40px;
   background:rgba(255,255,0,.8);
   cursor:move;
+  user-select: none;
 }
 
 #item1 {

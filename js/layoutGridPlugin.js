@@ -225,7 +225,7 @@ class LayoutGridPlugin {
     }
 
     if (this.resizeDirection == 'n') {
-      // check x position to west
+      // check y position to north
       this.grid.rowsEndsY.every(function(rowEndY, i) {
         if (_this.mouse.current.y < rowEndY) {
           _this.item.rowStart = Math.min(i + 1, _this.itemBeforeTransformations.rowSpan + _this.itemBeforeTransformations.rowStart - 1);
@@ -242,9 +242,6 @@ class LayoutGridPlugin {
     }
 
     this.getItemStyles();
-
-    //this.item.columnSpan = parseInt(this.getStyleProperty(this.item.DOM, 'grid-column-end').replace('span ',''));
-    //this.item.rowSpan = parseInt(this.getStyleProperty(this.item.DOM, 'grid-row-end').replace('span ',''));
   }
 
   triggerMouseUp(e) {
@@ -271,7 +268,6 @@ class LayoutGridPlugin {
     this.isResizing = true;
     this.resizeDirection = resizeDirection;
     this.itemBeforeTransformations = JSON.parse(JSON.stringify(this.item));
-    console.log(this.itemBeforeTransformations);
   }
 
   setResizeOff() {
@@ -361,6 +357,11 @@ class LayoutGridPlugin {
 
     document.addEventListener('mouseup', function(e){
       _this.triggerMouseUp(e);
+    });
+
+    window.addEventListener('resize', function(e){
+      _this.updateMouse(e);
+      _this.getAllLimits();
     });
   }
 }
